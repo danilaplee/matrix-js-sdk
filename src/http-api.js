@@ -18,7 +18,7 @@ limitations under the License.
  * This is an internal module. See {@link MatrixHttpApi} for the public class.
  * @module http-api
  */
-// import Promise from 'bluebird';
+import Promise from 'bluebird';
 const parseContentType = require('content-type').parse;
 
 const utils = require("./utils");
@@ -686,10 +686,13 @@ module.exports.MatrixHttpApi.prototype = {
         }
 
         var defer = {}
-        const reqPromise = new Promise((resolve, reject)=>{
+        var reqPromise = new Promise((resolve, reject)=>{
             defer.resolve = resolve
             defer.reject = reject
+            // defer.done = reqPromise.then
         })
+        defer.done = reqPromise.then
+        // console.log(reqPromise, defer)
 
         let timeoutId;
         let timedOut = false;

@@ -49,7 +49,7 @@ try {
     var Crypto = require("./crypto");
     CRYPTO_ENABLED = true;
 } catch (e) {
-    console.warn("Unable to load crypto module: crypto will be disabled: " + e);
+    // console.warn("Unable to load crypto module: crypto will be disabled: " + e);
 }
 
 /**
